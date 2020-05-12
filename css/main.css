@@ -1,0 +1,100 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    /* background: url(../img/bkg.jpg); */
+    background-color: #d3d3d3;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#mainScreen{
+    z-index: -2;
+}
+
+#headline{
+    color: black;
+    text-align: center;
+}
+
+.box{
+    position: absolute;
+    top: 50%;
+    left: 85%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    height: 500px;
+    backdrop-filter: blur(10px);  /*毛玻璃效果*/
+    /* background-color: rgba(0,0,0,0.4); */ /*透明色*/
+    /* background-color: #e5e5e5; */
+    /* border-radius: 15px; */
+    z-index: 99;
+}
+
+.video{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+
+span{
+    display: inline-block;
+    height: 15px;
+}
+.span1{
+    width: 150px;
+    position: relative;
+}
+.input{
+    border: 0px;
+    float: left;
+    height: 20px;
+    width: 140px;
+    padding: 10px 5px;
+    position: absolute;
+    top: 0;
+    margin-left: 0;
+}
+.button{
+    float: right;
+    height: 40px;
+    background-color: #3385ff;
+    color: #fff;
+    font-size: 14px;
+    width: 60px;
+    letter-spacing: 1px;
+}
+
+
+
+#bottom{
+    /* height: 20px; */
+    padding-top: 94%;
+    margin: 33px auto;
+}
+
+
+/* input{
+    border-bottom-left-radius: 15px;
+    margin-left: 10px;
+    height: 20px;
+}  */
+
+.right {
+position: absolute;
+visibility: hidden;
+white-space: nowrap;
+/*left: 700px;*/
+transform: translateX(700px);
+}
+.left {
+position: absolute;
+white-space: nowrap;
+user-select: none;
+transition: transform 10s linear; /* 弹幕滑动时长 */
+}
