@@ -28,13 +28,11 @@ function init() {
             doms.push(dom);
             // 每次到transition结束的时候 就是弹幕划出屏幕了 将DOM位置重置 再放回DOM池
             dom.addEventListener('transitionend', () => {
-            dom.className = 'right';
-            // dom.style.transition = null;
-            // dom.style.left = null;
-            dom.style.transform = null;
-
-            
-            domPool[j].push(dom);
+                dom.className = 'right';
+                // dom.style.transition = null;
+                // dom.style.left = null;
+                dom.style.transform = null;
+                domPool[j].push(dom);
             });
         }
         domPool.push(doms);
@@ -84,7 +82,8 @@ function shootDanmu(dom, text, channel) {
     // 大概 dom.clientWidth * 10 的时间 该条弹幕就从右边全部划出到可见区域 再加1秒保证弹幕之间距离
     setTimeout(() => {
         hasPosition[channel] = true;
-    }, dom.clientWidth * 100 + 1000);
+    }, dom.clientWidth * 100 + 1000)
+    ;
 
     // txt.value = "";//清空输入框
 }
@@ -93,33 +92,33 @@ function shootDanmu(dom, text, channel) {
 
 window.onload = function() {
 
-init();
+    init();
 
-// 为input和button添加事件监听
-let btn = document.getElementsByTagName('button')[0];//todo
-let input = document.getElementsByTagName('input')[0];//todo
+    // 为input和button添加事件监听
+    let btn = document.getElementsByTagName('button')[0];//todo
+    let input = document.getElementsByTagName('input')[0];//todo
 
-btn.addEventListener('click', () => {
-    input.value = input.value.trim();
-    if (input.value) danmuPool.push(input.value);
-})
+    btn.addEventListener('click', () => {
+        input.value = input.value.trim();
+        if (input.value) danmuPool.push(input.value);
+    })
 
-input.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter' && (input.value = input.value.trim())) {
-    danmuPool.push(input.value);
-    }
-})
+    input.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter' && (input.value = input.value.trim())) {
+        danmuPool.push(input.value);
+        }
+    })
 
-// 每隔1ms从弹幕池里获取弹幕（如果有的话）并发射
-setInterval(() => {
-    let channel;
-    if (danmuPool.length && (channel = getChannel()) != -1) {
-        let dom = domPool[channel].shift();
-        let danmu = danmuPool.shift();
-        shootDanmu(dom, danmu, channel);
-        txt.value = "";//清空输入框
-    }
-}, 1);
+    // 每隔1ms从弹幕池里获取弹幕（如果有的话）并发射
+    setInterval(() => {
+        let channel;
+        if (danmuPool.length && (channel = getChannel()) != -1) {
+            let dom = domPool[channel].shift();
+            let danmu = danmuPool.shift();
+            shootDanmu(dom, danmu, channel);
+            txt.value = "";//清空输入框
+        }
+    }, 1);
 
 }
 
